@@ -7,6 +7,11 @@
 	// Chave de topo herdável. Impede que o Worker fique público em kyntech-www.<subdominio>.workers.dev;
 	// o acesso passa a ser só pelo custom domain configurado no dashboard.
 	"workers_dev": false,
+	// Também de topo. Persiste os logs do Worker no dashboard - é o único rastro de um envio
+	// que falhe, já que o lead não é gravado em lugar nenhum.
+	"observability": {
+		"enabled": true
+	},
 	"assets": {
 		"directory": "./out",
 		"binding": "ASSETS",
