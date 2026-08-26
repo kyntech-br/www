@@ -16,7 +16,7 @@ export const ContactForm = () => {
 		email: z.string().email("Email inválido").max(150, "Máx: 150 caracteres"),
 		phone: z.string().optional(),
 		idea: z.string().max(750, "Máx: 750 caracteres").optional(),
-		website: z.string().optional()
+		_hp: z.string().optional()
 	})
 
 	type ContactFormSchema = z.infer<typeof contactFormSchema>
@@ -28,11 +28,12 @@ export const ContactForm = () => {
 			email: "",
 			phone: "",
 			idea: "",
-			website: ""
+			_hp: ""
 		}
 	})
 
 	const [status, setStatus] = useState<"idle" | "success" | "error">("idle")
+	const [errorMessage, setErrorMessage] = useState<string | null>(null)
 	const { control, handleSubmit, register, reset, formState } = contactForm
 
 	function formatPhoneNumber(value: string): string {
@@ -52,6 +53,7 @@ export const ContactForm = () => {
 
 	async function onSubmit(data: ContactFormSchema) {
 		setStatus("idle")
+		setErrorMessage(null)
 
 		try {
 			const response = await fetch("/api/contato", {
@@ -60,12 +62,14 @@ export const ContactForm = () => {
 				body: JSON.stringify(data)
 			})
 
-			const json = (await response.json()) as { success: boolean }
+			const json = (await response.json()) as { success: boolean; error?: string }
 
 			if (response.ok && json.success) {
 				setStatus("success")
 				reset()
 			} else {
+				// Mostra o motivo devolvido pela API (ex: rate limit) em vez de um erro genérico.
+				setErrorMessage(json.error ?? null)
 				setStatus("error")
 			}
 		} catch {
@@ -76,8 +80,18 @@ export const ContactForm = () => {
 	return (
 		<Form {...contactForm}>
 			<form onSubmit={handleSubmit(onSubmit)} className="space-y-8">
-				{/* Honeypot: escondido por CSS de propósito - bots ignoram type="hidden" */}
-				<input type="text" tabIndex={-1} autoComplete="off" aria-hidden="true" className="absolute -left-[9999px]" {...register("website")} />
+				{/* Honeypot: escondido por CSS de propósito - bots ignoram type="hidden".
+				    Nome opaco e data-*-ignore para que autofill de navegador e gerenciador de senhas não preencham. */}
+				<input
+					type="text"
+					tabIndex={-1}
+					autoComplete="off"
+					aria-hidden="true"
+					data-1p-ignore
+					data-lpignore="true"
+					className="absolute -left-[9999px]"
+					{...register("_hp")}
+				/>
 
 				<FormField
 					control={control}
@@ -154,7 +168,7 @@ export const ContactForm = () => {
 
 				{status === "error" && (
 					<p className="text-sm text-red-600 dark:text-red-400">
-						Não conseguimos enviar. Chame no WhatsApp:{" "}
+						{errorMessage ?? "Não conseguimos enviar."} Chame no WhatsApp:{" "}
 						<a href="https://wa.me/556992333748" className="underline">
 							clique aqui
 						</a>

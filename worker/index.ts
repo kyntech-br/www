@@ -12,7 +12,7 @@ interface ContactBody {
 	email?: string
 	phone?: string
 	idea?: string
-	website?: string
+	_hp?: string
 }
 
 const DESTINATION = "kyntech.ck@gmail.com"
@@ -44,7 +44,8 @@ async function handleContact(request: Request, env: Env): Promise<Response> {
 		const payload = (await request.json()) as ContactBody
 
 		// Honeypot: bot preenche, humano não vê o campo. Finge sucesso e descarta.
-		if (payload.website) return Response.json({ success: true })
+		// Nome opaco de propósito: `website` seria autopreenchido por navegador/gerenciador de senhas.
+		if (payload._hp) return Response.json({ success: true })
 
 		const name = sanitize(payload.name ?? "")
 		const email = sanitize(payload.email ?? "")
