@@ -7,8 +7,14 @@
 	},
 	"files": {
 		"ignoreUnknown": false,
-		"ignore": ["src/components/vortex.tsx"],
-		"include": ["src/**/*.ts", "src/**/*.tsx"]
+		"ignore": [
+			"src/components/vortex.tsx"
+		],
+		"include": [
+			"src/**/*.ts",
+			"src/**/*.tsx",
+			"worker/**/*.ts"
+		]
 	},
 	"formatter": {
 		"enabled": true,
