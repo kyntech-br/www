@@ -4,6 +4,9 @@
 	"main": "worker/index.ts",
 	"compatibility_date": "2026-08-25",
 	"compatibility_flags": ["nodejs_compat"],
+	// Chave de topo herdável. Impede que o Worker fique público em kyntech-www.<subdominio>.workers.dev;
+	// o acesso passa a ser só pelo custom domain configurado no dashboard.
+	"workers_dev": false,
 	"assets": {
 		"directory": "./out",
 		"binding": "ASSETS",
