@@ -6,21 +6,21 @@ import { HowWorkSection } from "@/components/sections/how-work-section"
 import { SolutionsSection } from "@/components/sections/solutions-section"
 
 const Home = () => (
-		<>
-			<Hero />
+	<>
+		<Hero />
 
-			<div className="space-y-20">
-				<HowWorkSection />
+		<div className="space-y-20">
+			<HowWorkSection />
 
-				<ContactSection />
+			<ContactSection />
 
-				<SolutionsSection />
+			<SolutionsSection />
 
-				<HighlightsSection />
+			<HighlightsSection />
 
-				<FAQ />
-			</div>
-		</>
+			<FAQ />
+		</div>
+	</>
 )
 
 export default Home
