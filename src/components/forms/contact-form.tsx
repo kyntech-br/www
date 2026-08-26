@@ -139,7 +139,7 @@ export const ContactForm = () => {
 									}}
 								/>
 							</FormControl>
-							<FormDescription className="text-foreground/60 dark:text-muted-foreground">Respostas em 15 minutos</FormDescription>
+							<FormDescription className="text-foreground/60 dark:text-muted-foreground">Retornamos em até 2 horas</FormDescription>
 							<FormMessage />
 						</FormItem>
 					)}
@@ -164,7 +164,7 @@ export const ContactForm = () => {
 					{formState.isSubmitting ? "Enviando..." : "Quero minha Proposta Grátis"}
 				</Button>
 
-				{status === "success" && <p className="text-sm text-green-600 dark:text-green-400">Recebido! Retornamos em breve.</p>}
+				{status === "success" && <p className="text-sm text-green-600 dark:text-green-400">Recebido! Retornamos em até 2 horas.</p>}
 
 				{status === "error" && (
 					<p className="text-sm text-red-600 dark:text-red-400">
