@@ -1,6 +1,7 @@
 "use client"
 
 import { zodResolver } from "@hookform/resolvers/zod"
+import { useState } from "react"
 import { useForm } from "react-hook-form"
 import { z } from "zod"
 
@@ -8,14 +9,14 @@ import { Button } from "@/components/ui/button"
 import { Form, FormControl, FormDescription, FormField, FormItem, FormLabel, FormMessage } from "@/components/ui/form"
 import { Input } from "@/components/ui/input"
 import { Textarea } from "@/components/ui/textarea"
-import { addContact } from "@/actions/firebase/add-contact"
 
 export const ContactForm = () => {
 	const contactFormSchema = z.object({
 		name: z.string().min(1, "Nome é obrigatório").max(150, "Máx: 150 caracteres"),
 		email: z.string().email("Email inválido").max(150, "Máx: 150 caracteres"),
 		phone: z.string().optional(),
-		idea: z.string().max(750, "Máx: 750 caracteres").optional()
+		idea: z.string().max(750, "Máx: 750 caracteres").optional(),
+		website: z.string().optional()
 	})
 
 	type ContactFormSchema = z.infer<typeof contactFormSchema>
@@ -26,11 +27,13 @@ export const ContactForm = () => {
 			name: "",
 			email: "",
 			phone: "",
-			idea: ""
+			idea: "",
+			website: ""
 		}
 	})
 
-	const { control, handleSubmit } = contactForm
+	const [status, setStatus] = useState<"idle" | "success" | "error">("idle")
+	const { control, handleSubmit, register, reset, formState } = contactForm
 
 	function formatPhoneNumber(value: string): string {
 		const digits = value.replace(/\D/g, "").slice(0, 11)
@@ -48,12 +51,34 @@ export const ContactForm = () => {
 	}
 
 	async function onSubmit(data: ContactFormSchema) {
-		await addContact(data)
+		setStatus("idle")
+
+		try {
+			const response = await fetch("/api/contato", {
+				method: "POST",
+				headers: { "Content-Type": "application/json" },
+				body: JSON.stringify(data)
+			})
+
+			const json = (await response.json()) as { success: boolean }
+
+			if (response.ok && json.success) {
+				setStatus("success")
+				reset()
+			} else {
+				setStatus("error")
+			}
+		} catch {
+			setStatus("error")
+		}
 	}
 
 	return (
 		<Form {...contactForm}>
 			<form onSubmit={handleSubmit(onSubmit)} className="space-y-8">
+				{/* Honeypot: escondido por CSS de propósito - bots ignoram type="hidden" */}
+				<input type="text" tabIndex={-1} autoComplete="off" aria-hidden="true" className="absolute -left-[9999px]" {...register("website")} />
+
 				<FormField
 					control={control}
 					name="name"
@@ -121,9 +146,21 @@ export const ContactForm = () => {
 					)}
 				/>
 
-				<Button type="submit" className="h-11 w-full font-semibold">
-					Quero minha Proposta Grátis
+				<Button type="submit" disabled={formState.isSubmitting} className="h-11 w-full font-semibold">
+					{formState.isSubmitting ? "Enviando..." : "Quero minha Proposta Grátis"}
 				</Button>
+
+				{status === "success" && <p className="text-sm text-green-600 dark:text-green-400">Recebido! Retornamos em breve.</p>}
+
+				{status === "error" && (
+					<p className="text-sm text-red-600 dark:text-red-400">
+						Não conseguimos enviar. Chame no WhatsApp:{" "}
+						<a href="https://wa.me/556992333748" className="underline">
+							clique aqui
+						</a>
+						.
+					</p>
+				)}
 			</form>
 		</Form>
 	)
