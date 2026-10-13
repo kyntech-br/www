@@ -7,6 +7,7 @@ export const Footer = () => (
 					Transformando <span className="text-black dark:text-white underline font-normal">ideias</span> em{" "}
 					<span className="text-black dark:text-white underline font-normal">grandes negócios</span>.
 				</p>
+				<p className="mt-6 text-sm text-center text-[#878787]">CNPJ 63.419.150/0001-54</p>
 			</div>
 		</div>
 
