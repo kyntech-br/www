@@ -16,36 +16,36 @@ const solutionsCardsArray: {
 }[] = [
 	{
 		id: 1,
-		title: "Sites Sob Medida",
-		description: "Desenvolvidos para conversão, com design exclusivo e tecnologia de ponta.",
+		title: "Sites para Empresas",
+		description: "Sites que apresentam seus serviços com clareza e facilitam o contato de novos clientes.",
 		icon: LayoutPanelLeft,
-		subitems: ["SEO integrado", "100% responsivo", "CMS personalizado"],
-		cta: "Criar Meu Site"
+		subitems: ["Conteúdo claro", "Boa experiência no celular", "Base técnica para SEO"],
+		cta: "Conversar Sobre Meu Site"
 	},
 	{
 		id: 2,
-		title: "Aplicativos Mobile",
-		description: "Nativos (iOS/Android) ou híbridos: performance premium para seu negócio.",
+		title: "SEO e Presença Digital",
+		description: "Melhoramos a estrutura e o conteúdo do seu site para que sua empresa seja mais fácil de encontrar e entender.",
 		icon: Smartphone,
-		subitems: ["Integração com APIs", "Notificações push", "Offline-first"],
-		cta: "Desenvolver App"
+		subitems: ["SEO técnico", "Relevância nas buscas locais", "Caminhos claros para contato"],
+		cta: "Melhorar Minha Presença"
 	},
 	{
 		id: 3,
-		title: "Integração de Sistemas",
-		description: "Conecte ERPs, CRMs e ferramentas em um ecossistema único.",
+		title: "Sistemas e Automações",
+		description: "Desenvolvemos soluções sob medida e conectamos ferramentas para reduzir tarefas manuais.",
 		icon: Code2,
-		subitems: ["APIs customizadas", "Migração segura", "Sincronização em tempo real"],
-		cta: "Conectar Agora"
+		subitems: ["Sistemas sob medida", "Integrações", "Fluxos automatizados"],
+		cta: "Conversar Sobre Meu Projeto"
 	}
 ]
 
 export const SolutionsSection = () => (
 	<SectionContainer id="solucoes" className="scroll-mt-24">
 		<SectionHeader className="mb-12 text-center">
-			<SectionTitle className="font-semibold text-3xl tracking-tighter leading-7 md:text-center mb-4">Soluções que Impulsionam Negócios</SectionTitle>
+			<SectionTitle className="font-semibold text-3xl tracking-tighter leading-7 md:text-center mb-4">Tecnologia para sua empresa crescer</SectionTitle>
 			<SectionDescription className="text-neutral-500 dark:text-neutral-300 text-center text-lg">
-				Tecnologia personalizada para escalar sua operação, engajar clientes e automatizar processos.
+				Da presença nas buscas aos processos internos, conectamos tecnologia aos objetivos do seu negócio.
 			</SectionDescription>
 		</SectionHeader>
 

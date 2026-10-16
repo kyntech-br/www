@@ -100,9 +100,9 @@ export const ContactForm = () => {
 						<FormItem>
 							<FormLabel>Nome Completo *</FormLabel>
 							<FormControl>
-								<Input placeholder="Ex: Maria Souza (CEO da Maria Company)" {...field} />
+								<Input placeholder="Ex: Maria Souza" {...field} />
 							</FormControl>
-							<FormDescription className="text-foreground/60 dark:text-muted-foreground">Usaremos para personalizar sua proposta</FormDescription>
+							<FormDescription className="text-foreground/60 dark:text-muted-foreground">Usaremos para responder ao seu contato</FormDescription>
 							<FormMessage />
 						</FormItem>
 					)}
@@ -117,7 +117,7 @@ export const ContactForm = () => {
 							<FormControl>
 								<Input placeholder="contato@empresa.com" {...field} />
 							</FormControl>
-							<FormDescription className="text-foreground/60 dark:text-muted-foreground">Enviaremos a proposta detalhada e sem spam.</FormDescription>
+							<FormDescription className="text-foreground/60 dark:text-muted-foreground">Usaremos para conversar sobre seu projeto.</FormDescription>
 							<FormMessage />
 						</FormItem>
 					)}
@@ -139,7 +139,7 @@ export const ContactForm = () => {
 									}}
 								/>
 							</FormControl>
-							<FormDescription className="text-foreground/60 dark:text-muted-foreground">Retornamos em até 2 horas</FormDescription>
+							<FormDescription className="text-foreground/60 dark:text-muted-foreground">Se preferir, podemos conversar por WhatsApp</FormDescription>
 							<FormMessage />
 						</FormItem>
 					)}
@@ -152,7 +152,7 @@ export const ContactForm = () => {
 						<FormItem>
 							<FormLabel>Conte sua ideia</FormLabel>
 							<FormControl>
-								<Textarea rows={5} className="resize-none h-28" placeholder={`Ex: "App para delivery de medicamentos com integração em farmácias`} {...field} />
+								<Textarea rows={5} className="resize-none h-28" placeholder="Ex: preciso de um site para apresentar meus serviços" {...field} />
 							</FormControl>
 							<FormDescription className="text-foreground/60 dark:text-muted-foreground">Seja breve - depois detalhamos juntos</FormDescription>
 							<FormMessage />
@@ -161,10 +161,10 @@ export const ContactForm = () => {
 				/>
 
 				<Button type="submit" disabled={formState.isSubmitting} className="h-11 w-full font-semibold">
-					{formState.isSubmitting ? "Enviando..." : "Quero minha Proposta Grátis"}
+					{formState.isSubmitting ? "Enviando..." : "Conversar sobre meu projeto"}
 				</Button>
 
-				{status === "success" && <p className="text-sm text-green-600 dark:text-green-400">Recebido! Retornamos em até 2 horas.</p>}
+				{status === "success" && <p className="text-sm text-green-600 dark:text-green-400">Recebemos sua mensagem. Entraremos em contato em breve.</p>}
 
 				{status === "error" && (
 					<p className="text-sm text-red-600 dark:text-red-400">

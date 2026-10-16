@@ -3,7 +3,7 @@ import Link from "next/link"
 
 import { ToggleModeButton } from "@/components/toggle-mode-button"
 import { Button } from "@/components/ui/button"
-import { Drawer, DrawerContent, DrawerHeader, DrawerTitle, DrawerTrigger } from "@/components/ui/drawer"
+import { Drawer, DrawerClose, DrawerContent, DrawerDescription, DrawerHeader, DrawerTitle, DrawerTrigger } from "@/components/ui/drawer"
 
 const linksArray = [
 	{ text: "Como funciona", href: "como-funciona" },
@@ -26,14 +26,17 @@ export const Header = () => (
 				<DrawerContent className="pb-4 lg:hidden">
 					<DrawerHeader>
 						<DrawerTitle className="sr-only">Links Úteis</DrawerTitle>
+						<DrawerDescription className="sr-only">Navegue pelas seções da página.</DrawerDescription>
 					</DrawerHeader>
 					<nav>
 						<ul className="flex flex-col gap-y-2">
 							{linksArray.map(({ text, href }) => (
 								<li key={text}>
-									<Button variant="link" className="ml-3 text-xl" asChild>
-										<Link href={`#${href}`}>{text}</Link>
-									</Button>
+									<DrawerClose asChild>
+										<Button variant="link" className="ml-3 text-xl" asChild>
+											<Link href={`#${href}`}>{text}</Link>
+										</Button>
+									</DrawerClose>
 								</li>
 							))}
 						</ul>
@@ -41,7 +44,7 @@ export const Header = () => (
 				</DrawerContent>
 			</Drawer>
 
-			<h1 className="font-extralight dark:font-thin text-2xl uppercase tracking-widest">Kyntech</h1>
+			<span className="font-extralight dark:font-thin text-2xl uppercase tracking-widest">Kyntech</span>
 
 			<ToggleModeButton variant="ghost" className="lg:hidden" />
 

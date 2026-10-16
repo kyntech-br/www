@@ -15,22 +15,19 @@ const inter = Inter({
 })
 
 export const metadata: Metadata = {
+	metadataBase: new URL(baseUrl),
+	alternates: {
+		canonical: baseUrl
+	},
 	title: {
-		default: "Kyntech | Desenvolvimento de Software Sob Medida",
+		default: "Kyntech | Criação de Sites e Soluções Digitais em Vilhena",
 		template: "Kyntech | %s"
 	},
-	description: "Transformamos ideias em sites, apps e sistemas inteligentes com design impactante, integração de dados e foco em performance.",
-	keywords: [
-		"desenvolvimento de software",
-		"criação de sites personalizados",
-		"aplicativos sob demanda",
-		"integração de sistemas",
-		"design de UX/UI",
-		"consultoria tech"
-	],
+	description:
+		"A Kyntech desenvolve sites, sistemas e soluções de SEO e automação em Vilhena, RO. Tecnologia para fortalecer sua presença digital e gerar oportunidades.",
 	openGraph: {
-		title: "Kyntech | Soluções Tech Sob Medida",
-		description: "Da ideia ao código: desenvolvemos softwares que impulsionam negócios. Agende uma consultoria gratuita.",
+		title: "Kyntech | Criação de Sites e Soluções Digitais em Vilhena",
+		description: "Sites, sistemas, SEO e automações para empresas de Vilhena e outras regiões. Conheça a Kyntech e converse sobre seu projeto.",
 		url: baseUrl,
 		siteName: "Kyntech",
 		images: [
@@ -38,7 +35,7 @@ export const metadata: Metadata = {
 				url: `${baseUrl}/og-image.png`,
 				width: 1200,
 				height: 630,
-				alt: "Kyntech - Equipe tech desenvolvendo soluções digitais"
+				alt: "Logo da Kyntech com a frase Transformando ideias em negócios"
 			}
 		],
 		locale: "pt_BR",

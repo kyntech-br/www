@@ -21,26 +21,26 @@ const stepsArray: {
 }[] = [
 	{
 		id: 0,
-		title: "1. Consultoria",
-		text: "Conversaremos para detalhar seu projeto: objetivos, público-alvo e funcionalidades.",
+		title: "1. Conversa inicial",
+		text: "Entendemos sua empresa, seus clientes e o que precisa melhorar na presença digital ou na operação.",
 		icon: MessageSquareText
 	},
 	{
 		id: 1,
-		title: "2. Protótipo Realista(MVP)",
-		text: "Desenvolveremos um protótipo interativo da sua ideia, validando design e funcionalidades.",
+		title: "2. Plano do projeto",
+		text: "Definimos a solução adequada, as etapas e o que será entregue antes de começar o desenvolvimento.",
 		icon: DraftingCompass
 	},
 	{
 		id: 2,
-		title: "3. Codificamos com Tecnologia de Ponta",
-		text: "Seu projeto é desenvolvido em etapas, com testes rigorosos de usabilidade, segurança e desempenho. Você acompanha cada fase em tempo real.",
+		title: "3. Desenvolvimento e ajustes",
+		text: "Criamos o site, sistema ou automação e revisamos o trabalho com você ao longo do projeto.",
 		icon: Code2
 	},
 	{
 		id: 3,
-		title: "4. Lançamento e Evolução Contínua",
-		text: "Entregaremos o projeto pronto para uso, com hospedagem, domínio e treinamento. Oferecemos suporte técnico e atualizações conforme sua demanda cresce.",
+		title: "4. Publicação e próximos passos",
+		text: "Colocamos a solução em uso e combinamos os próximos ajustes ou ações de presença digital conforme a necessidade.",
 		icon: Rocket
 	}
 ]
@@ -51,11 +51,11 @@ export const HowWorkSection = () => (
 			className="
 		text-center space-y-2"
 		>
-			<SectionTitle className="font-semibold text-3xl tracking-tighter leading-7">Como Funciona</SectionTitle>
+			<SectionTitle className="font-semibold text-3xl tracking-tighter leading-7">Como trabalhamos</SectionTitle>
 
 			<SectionDescription className="text-neutral-500 dark:text-neutral-300 text-base text-nowrap">
-				Do Seu Briefing ao Software Pronto. <br className="sm:hidden" />
-				Simples, Rápido e Sem Surpresas
+				Da conversa inicial à publicação. <br className="sm:hidden" />
+				Cada etapa alinhada ao seu negócio.
 			</SectionDescription>
 		</SectionHeader>
 
